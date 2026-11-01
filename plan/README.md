@@ -23,7 +23,10 @@ Each morning, open the next day file, for example `week-01/day-001.md`, and do o
 
 ## Ground rules
 
-- **Hardware:** Weeks 1–4 run on a laptop or Google Colab. From week 5 you need one rented GPU, such as an A10G or L4 on RunPod, Lambda or Modal. Week 21 needs two GPUs.
+- **Hardware:** Everything runs on your own GPU (an RTX 4060 with 8 GB) unless a day file explicitly says to rent. The plan uses Llama 3.2 1B and 3B, which fit in 8 GB. Avoid renting:
+  - **Required rental:** one session on a machine with two GPUs in week 21 (day 145), because tensor parallelism can't be measured on one GPU.
+  - **Optional rentals:** day 131 (real speculative-decoding speed-up with Llama 3.1 8B) and day 156 (rerunning the final benchmark on a datacenter GPU). Skip them if cost matters; each day says what to do instead.
+  - **When you do rent:** build and test everything locally first, have your scripts ready, rent by the hour from the cheapest provider that has the GPU (RunPod, Vast.ai, Lambda or Modal), and shut the machine down as soon as your numbers are recorded.
 - **Coding interviews:** From week 14, add 30 minutes a day of practice using the [NeetCode 150](https://neetcode.io/practice) list.
 - **Write as you go:** keep a `notes/` folder and a `RESULTS.md` file in the repo from day one. Every number you measure goes into `RESULTS.md`.
 - **If you fall behind:** Take the time from week 22, which is optional, instead of skipping writing. The design docs and blog posts are what hiring managers will actually read.
