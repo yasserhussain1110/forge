@@ -9,8 +9,8 @@ Tick a box when you finish that day's file. Update the counter at the end of eac
 ## Month 1 · Foundations
 
 ### [Week 1](week-01/) · Python, PyTorch and the basic math
-- [ ] [Day 001](week-01/day-001.md) · Set up and meet tensors
-- [ ] [Day 002](week-01/day-002.md) · Tensor shapes and broadcasting
+- [X] [Day 001](week-01/day-001.md) · Set up and meet tensors
+- [X] [Day 002](week-01/day-002.md) · Tensor shapes and broadcasting
 - [ ] [Day 003](week-01/day-003.md) · Linear algebra intuition, part 1
 - [ ] [Day 004](week-01/day-004.md) · Linear algebra intuition, part 2
 - [ ] [Day 005](week-01/day-005.md) · Your first trained model
