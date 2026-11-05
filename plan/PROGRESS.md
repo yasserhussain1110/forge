@@ -11,14 +11,14 @@ Tick a box when you finish that day's file. Update the counter at the end of eac
 ### [Week 1](week-01/) · Python, PyTorch and the basic math
 - [X] [Day 001](week-01/day-001.md) · Set up and meet tensors
 - [X] [Day 002](week-01/day-002.md) · Tensor shapes and broadcasting
-- [ ] [Day 003](week-01/day-003.md) · Linear algebra intuition, part 1
-- [ ] [Day 004](week-01/day-004.md) · Linear algebra intuition, part 2
-- [ ] [Day 005](week-01/day-005.md) · Your first trained model
-- [ ] [Day 006](week-01/day-006.md) · Probability, softmax and sampling
-- [ ] [Day 007](week-01/day-007.md) · Sunday review
+- [X] [Day 003](week-01/day-003.md) · Linear algebra intuition, part 1
+- [X] [Day 004](week-01/day-004.md) · Linear algebra intuition, part 2
+- [X] [Day 005](week-01/day-005.md) · Your first trained model
+- [X] [Day 006](week-01/day-006.md) · Probability, softmax and sampling
+- [X] [Day 007](week-01/day-007.md) · Sunday review
 
 ### [Week 2](week-02/) · Neural networks from scratch
-- [ ] [Day 008](week-02/day-008.md) · micrograd, part 1
+- [X] [Day 008](week-02/day-008.md) · micrograd, part 1
 - [ ] [Day 009](week-02/day-009.md) · micrograd, part 2
 - [ ] [Day 010](week-02/day-010.md) · makemore part 1: the bigram model
 - [ ] [Day 011](week-02/day-011.md) · makemore part 2: the MLP
