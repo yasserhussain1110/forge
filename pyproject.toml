@@ -4,28 +4,31 @@ version = "0.1.0"
 description = "A Llama-style transformer built from scratch to learn LLM inference"
 requires-python = ">=3.12"
 dependencies = [
+    "accelerate>=1.15.0",
     "torch>=2.15",
     "transformers>=5.22",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "pytest>=9.0",
     "matplotlib>=3.11",
 ]
 
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["forge*"]
+where = ["src"]
 
 [tool.pytest.ini_options]
-pythonpath = ["."]
 testpaths = ["tests"]
 
-[tool.pyright]
-venvPath = "/home/yasser"
-venv = ".venv"
-extraPaths = ["."]
+[tool.uv.sources]
+torch = { index = "pytorch-cu132" }
+
+[[tool.uv.index]]
+name = "pytorch-cu132"
+url = "https://download.pytorch.org/whl/cu132"
+explicit = true
