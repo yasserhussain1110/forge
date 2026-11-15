@@ -17,7 +17,7 @@ class TinyConfig:
 def test_attention_matches_huggingface():
     torch.manual_seed(0)
     config = TinyConfig()
-    reference = LlamaAttention(config, layer_idx=0)
+    reference = LlamaAttention(config, layer_idx=0)  # pyright: ignore[reportArgumentType]
     mine = Attention(
         hidden_size=config.hidden_size,
         num_attention_heads=config.num_attention_heads,

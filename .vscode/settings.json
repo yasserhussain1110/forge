@@ -1,0 +1,4 @@
+{
+  "python.defaultInterpreterPath": "/home/yasser/.venv/bin/python",
+  "python.languageServer": "Pylance"
+}

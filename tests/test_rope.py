@@ -7,7 +7,7 @@ from forge.rope import apply_llama3_scaling, compute_rope_inv_freq
 
 def test_rope_inv_freq_matches_huggingface():
     config = AutoConfig.from_pretrained("meta-llama/Llama-3.2-1B-Instruct")
-    reference = LlamaRotaryEmbedding(config)
+    reference = LlamaRotaryEmbedding(config)  # pyright: ignore[reportArgumentType]
     rope = config.rope_parameters
     inv_freq = compute_rope_inv_freq(rope["rope_theta"], config.head_dim)
     inv_freq = apply_llama3_scaling(

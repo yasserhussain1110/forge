@@ -6,6 +6,8 @@ from forge.rmsnorm import RMSNorm
 from forge.rope import apply_llama3_scaling, compute_rope_inv_freq
 
 class Transformer(nn.Module):
+    inv_freq: torch.Tensor
+
     def __init__(self, config):
         super().__init__()
         self.embed_tokens = nn.Embedding(config.vocab_size, config.hidden_size)
