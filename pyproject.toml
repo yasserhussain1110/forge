@@ -1,6 +1,18 @@
 [project]
 name = "forge"
 version = "0.1.0"
+description = "A Llama-style transformer built from scratch to learn LLM inference"
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=2.15",
+    "transformers>=5.22",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0",
+    "matplotlib>=3.11",
+]
 
 [build-system]
 requires = ["setuptools"]
@@ -8,3 +20,12 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = ["forge*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.pyright]
+venvPath = "/home/yasser"
+venv = ".venv"
+extraPaths = ["."]
