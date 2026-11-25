@@ -15,7 +15,7 @@ with open(hf_hub_download(model_id, "generation_config.json")) as f:
         config = json.load(f)
 
 messages = [
-    {"role": "user", "content": "Hello, What is the capital of France?"}
+    {"role": "user", "content": "Hey how are you?"}
 ]
 
 tokenized_chat = tokenizer.apply_chat_template(
@@ -24,5 +24,5 @@ tokenized_chat = tokenizer.apply_chat_template(
 with torch.no_grad():
     input_tokens = tokenized_chat["input_ids"][0].to("cuda")
     # input_tokens = tokenized_chat["input_ids"][0]
-    response = generate(llama, input_tokens, 20, config["eos_token_id"])
+    response = generate(llama, input_tokens, 100, config["eos_token_id"])
     print(tokenizer.decode(response[len(input_tokens):], skip_special_tokens=True))

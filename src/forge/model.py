@@ -1,6 +1,5 @@
 from torch import nn
 from forge.rmsnorm import RMSNorm
-from forge.mlp import MLP
 from forge.decoder import Decoder
 from huggingface_hub import hf_hub_download
 from safetensors.torch import load_file
