@@ -27,6 +27,7 @@ Each morning, open the next day file, for example `week-01/day-001.md`, and do o
   - **Required rental:** one session on a machine with two GPUs in week 21 (day 145), because tensor parallelism can't be measured on one GPU.
   - **Optional rentals:** day 131 (real speculative-decoding speed-up with Llama 3.1 8B) and day 156 (rerunning the final benchmark on a datacenter GPU). Skip them if cost matters; each day says what to do instead.
   - **When you do rent:** build and test everything locally first, have your scripts ready, rent by the hour from the cheapest provider that has the GPU (RunPod, Vast.ai, Lambda or Modal), and shut the machine down as soon as your numbers are recorded.
+- **API boundary:** Forge's OpenAI-compatible HTTP API (from week 8) is the only way other code reaches it. Nothing outside this repo imports Forge's Python code. See the architecture rules in [SCHEDULE-12-MONTH.md](SCHEDULE-12-MONTH.md).
 - **Coding interviews:** From week 14, add 30 minutes a day of practice using the [NeetCode 150](https://neetcode.io/practice) list.
 - **Write as you go:** keep a `notes/` folder and a `RESULTS.md` file in the repo from day one. Every number you measure goes into `RESULTS.md`.
 - **If you fall behind:** Take the time from week 22, which is optional, instead of skipping writing. The design docs and blog posts are what hiring managers will actually read.
