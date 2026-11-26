@@ -27,6 +27,10 @@ class Llama(nn.Module):
         x = self.norm(x)
         return self.lm_head(x)
 
+    def reset_kv_cache(self):
+        for layer in self.layers:
+            layer.reset_kv_cache()
+
 def load_llama(max_sequence_length):
     weights = {
         k.removeprefix("model."):v.float() for k,v in load_file(hf_hub_download(model_id, "model.safetensors")).items()

@@ -10,12 +10,18 @@ class Decoder(nn.Module):
         self.self_attn = Attention(hidden_size, num_attention_heads, num_key_value_heads, head_dim, rope_theta)
         self.post_attention_layernorm = RMSNorm(hidden_size, rms_norm_eps)
         self.mlp = MLP(hidden_size, intermediate_size)
-        self.register_buffer("k", zeros(num_key_value_heads, max_sequence_length, head_dim), persistent=False)
-        self.register_buffer("v", zeros(num_key_value_heads, max_sequence_length, head_dim), persistent=False)
-        self.cached_filled_size = 0
+        self.num_key_value_heads = num_key_value_heads
+        self.max_sequence_length = max_sequence_length
+        self.head_dim = head_dim
+        self.register_buffer("k", zeros(self.num_key_value_heads, self.max_sequence_length, self.head_dim), persistent=False)
+        self.register_buffer("v", zeros(self.num_key_value_heads, self.max_sequence_length, self.head_dim), persistent=False)
+        self.reset_kv_cache()
 
     def forward(self, x):
         x = x + self.self_attn(self.input_layernorm(x), self.cached_filled_size, self.k, self.v)
         x = x + self.mlp(self.post_attention_layernorm(x))
         self.cached_filled_size += x.size()[0]
         return x
+
+    def reset_kv_cache(self):
+        self.cached_filled_size = 0
