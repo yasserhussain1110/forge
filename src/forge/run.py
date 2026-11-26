@@ -9,7 +9,7 @@ model_id = "meta-llama/Llama-3.2-1B-Instruct"
 
 tokenizer = AutoTokenizer.from_pretrained(model_id, clean_up_tokenization_spaces=False)
 
-llama = load_llama()
+llama = load_llama(500)
 
 with open(hf_hub_download(model_id, "generation_config.json")) as f:
         config = json.load(f)
@@ -24,5 +24,5 @@ tokenized_chat = tokenizer.apply_chat_template(
 with torch.no_grad():
     input_tokens = tokenized_chat["input_ids"][0].to("cuda")
     # input_tokens = tokenized_chat["input_ids"][0]
-    response = generate(llama, input_tokens, 100, config["eos_token_id"])
+    response = generate(llama, input_tokens, config["eos_token_id"])
     print(tokenizer.decode(response[len(input_tokens):], skip_special_tokens=True))

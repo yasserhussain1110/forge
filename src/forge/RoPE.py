@@ -5,18 +5,18 @@ cos = None
 sin = None
 N = 0
 
-def do_rope(tensor, rope_theta, head_dim):
-    global cos, sin, N
-    if N != tensor.size()[0]:
-        angles = get_angles(len(tensor), rope_theta, head_dim)
-        angles = torch.cat([angles, angles], dim=1)
-        cos = angles.cos()
-        cos = cos[:, None, :]
-        sin = angles.sin()
-        sin = sin[:, None, :]
-        cos = cos.to(tensor.device)
-        sin = sin.to(tensor.device)
-        N = tensor.size()[0]
+def do_rope(tensor, start, rope_theta, head_dim):
+    # global cos, sin, N
+    # if N != tensor.size()[0]:
+    angles = get_angles(len(tensor), start, rope_theta, head_dim)
+    angles = torch.cat([angles, angles], dim=1)
+    cos = angles.cos()
+    cos = cos[:, None, :]
+    sin = angles.sin()
+    sin = sin[:, None, :]
+    cos = cos.to(tensor.device)
+    sin = sin.to(tensor.device)
+    # N = tensor.size()[0]
     left_half = tensor[..., :tensor.shape[-1] // 2]
     right_half = tensor[..., tensor.shape[-1] // 2:]
     swapped = torch.concat([-right_half, left_half], dim=2)
@@ -36,8 +36,8 @@ def get_speeds(rope_theta, head_dim):
     speeds = 1 / rope_theta ** (2 * i / head_dim)
     return speeds
 
-def get_angles(T, rope_theta, head_dim):
-    token_nums = torch.arange(T)
+def get_angles(T, start, rope_theta, head_dim):
+    token_nums = torch.arange(start, start + T)
     token_nums = token_nums[:,None]
     speeds = get_speeds(rope_theta, head_dim)
     return token_nums * adjust_speeds(speeds)
